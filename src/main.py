@@ -12,8 +12,7 @@ def generate_new_password(password_panel_label, password_length_slider, use_lowe
     return password
 
 def update_password_length(password_panel_label, password_length_slider, use_lower, use_upper, use_numbers, use_symbols):
-    password = generate_new_password(password_panel_label, password_length_slider, use_lower, use_upper, use_numbers, use_symbols)
-    return password
+    return generate_new_password(password_panel_label, password_length_slider, use_lower, use_upper, use_numbers, use_symbols)
 
 def main():
     root = tk.Tk()
@@ -64,9 +63,10 @@ def main():
 
     new_password_button.pack()
 
+
     use_lower_checkbox = tk.Checkbutton(
         root,
-        text="Lowercase",
+        text="Include Lowercase Characters",
         variable=USE_LOWER,
         command= lambda: generate_new_password(password_panel_label, password_length_slider, USE_LOWER.get(), USE_UPPER.get(), USE_NUMBERS.get(), USE_SYMBOLS.get())
     )
@@ -75,7 +75,7 @@ def main():
 
     use_upper_checkbox = tk.Checkbutton(
         root,
-        text="Uppercase",
+        text="Include Uppercase Characters",
         variable=USE_UPPER,
         command= lambda: generate_new_password(password_panel_label, password_length_slider, USE_LOWER.get(), USE_UPPER.get(), USE_NUMBERS.get(), USE_SYMBOLS.get())
     )
@@ -84,7 +84,7 @@ def main():
 
     use_numbers_checkbox = tk.Checkbutton(
         root,
-        text="Numbers",
+        text="Include Numbers",
         variable=USE_NUMBERS,
         command= lambda: generate_new_password(password_panel_label, password_length_slider, USE_LOWER.get(), USE_UPPER.get(), USE_NUMBERS.get(), USE_SYMBOLS.get())
     )
@@ -93,7 +93,7 @@ def main():
 
     use_symbols_checkbox = tk.Checkbutton(
         root,
-        text="Symbols",
+        text="Include Symbols",
         variable=USE_SYMBOLS,
         command= lambda: generate_new_password(password_panel_label, password_length_slider, USE_LOWER.get(), USE_UPPER.get(), USE_NUMBERS.get(), USE_SYMBOLS.get())
     )
