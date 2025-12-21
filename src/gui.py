@@ -164,7 +164,7 @@ class PasswordGeneratorApp:
             command=self.regenerate_password,
             font=("Helvetica", 14)
         )
-        self.symbols_checkbox.pack(pady=5, padx=20, anchor="w", pady=(5, 15))
+        self.symbols_checkbox.pack(pady=(5, 15), padx=20, anchor="w")
 
     def on_slider_change(self, value):
         length = int(value)
