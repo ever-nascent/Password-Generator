@@ -70,7 +70,7 @@ class PasswordGeneratorApp:
         buttons_frame = ctk.CTkFrame(main_frame, fg_color="transparent")
         buttons_frame.pack(fill="x", pady=(0, 20))
 
-        copy_button = ctk.CTkButton(
+        self.copy_button = ctk.CTkButton(
             buttons_frame,
             text="Copy Password",
             command=self.copy_to_clipboard,
@@ -78,7 +78,7 @@ class PasswordGeneratorApp:
             height=40,
             corner_radius=10
         )
-        copy_button.pack(side="left", expand=True, fill="x", padx=(0, 10))
+        self.copy_button.pack(side="left", expand=True, fill="x", padx=(0, 10))
 
         regenerate_button = ctk.CTkButton(
             buttons_frame,
@@ -185,6 +185,13 @@ class PasswordGeneratorApp:
     def copy_to_clipboard(self):
         password = self.password_label.cget("text")
         pyperclip.copy(password)
+
+        # Show notification
+        self.copy_button.configure(text="Copied!", fg_color="green")
+        self.root.after(1500, self.reset_copy_button)
+
+    def reset_copy_button(self):
+        self.copy_button.configure(text="Copy Password", fg_color=["#3B8ED0", "#1F6AA5"])
 
     def run(self):
         self.root.mainloop()
