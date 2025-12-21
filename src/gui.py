@@ -137,7 +137,7 @@ class PasswordGeneratorApp:
             command=self.regenerate_password,
             font=("Helvetica", 14)
         )
-        self.lowercase_checkbox.pack(pady=5, padx=20, anchor="w")
+        self.lowercase_checkbox.pack(pady=5, padx=25, anchor="w")
 
         self.uppercase_checkbox = ctk.CTkCheckBox(
             options_frame,
@@ -146,7 +146,7 @@ class PasswordGeneratorApp:
             command=self.regenerate_password,
             font=("Helvetica", 14)
         )
-        self.uppercase_checkbox.pack(pady=5, padx=20, anchor="w")
+        self.uppercase_checkbox.pack(pady=5, padx=25, anchor="w")
 
         self.numbers_checkbox = ctk.CTkCheckBox(
             options_frame,
@@ -155,7 +155,7 @@ class PasswordGeneratorApp:
             command=self.regenerate_password,
             font=("Helvetica", 14)
         )
-        self.numbers_checkbox.pack(pady=5, padx=20, anchor="w")
+        self.numbers_checkbox.pack(pady=5, padx=25, anchor="w")
 
         self.symbols_checkbox = ctk.CTkCheckBox(
             options_frame,
@@ -164,7 +164,7 @@ class PasswordGeneratorApp:
             command=self.regenerate_password,
             font=("Helvetica", 14)
         )
-        self.symbols_checkbox.pack(pady=(5, 15), padx=20, anchor="w")
+        self.symbols_checkbox.pack(pady=(5, 15), padx=25, anchor="w")
 
     def on_slider_change(self, value):
         length = int(value)
