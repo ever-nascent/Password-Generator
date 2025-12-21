@@ -44,7 +44,17 @@ class PasswordGeneratorApp:
             text="Password Generator",
             font=("Helvetica", 28, "bold")
         )
-        title_label.pack(pady=(0, 30))
+        title_label.pack(pady=(0, 10))
+
+        # Notification label (hidden by default)
+        self.notification_label = ctk.CTkLabel(
+            main_frame,
+            text="Copied!",
+            font=("Helvetica", 14, "bold"),
+            fg_color="green",
+            corner_radius=8,
+            height=35
+        )
 
         # Password display frame
         password_frame = ctk.CTkFrame(main_frame)
@@ -70,7 +80,7 @@ class PasswordGeneratorApp:
         buttons_frame = ctk.CTkFrame(main_frame, fg_color="transparent")
         buttons_frame.pack(fill="x", pady=(0, 20))
 
-        self.copy_button = ctk.CTkButton(
+        copy_button = ctk.CTkButton(
             buttons_frame,
             text="Copy Password",
             command=self.copy_to_clipboard,
@@ -78,7 +88,7 @@ class PasswordGeneratorApp:
             height=40,
             corner_radius=10
         )
-        self.copy_button.pack(side="left", expand=True, fill="x", padx=(0, 10))
+        copy_button.pack(side="left", expand=True, fill="x", padx=(0, 10))
 
         regenerate_button = ctk.CTkButton(
             buttons_frame,
@@ -187,11 +197,11 @@ class PasswordGeneratorApp:
         pyperclip.copy(password)
 
         # Show notification
-        self.copy_button.configure(text="Copied!", fg_color="green")
-        self.root.after(1500, self.reset_copy_button)
+        self.notification_label.pack(pady=(0, 20))
+        self.root.after(1500, self.hide_notification)
 
-    def reset_copy_button(self):
-        self.copy_button.configure(text="Copy Password", fg_color=["#3B8ED0", "#1F6AA5"])
+    def hide_notification(self):
+        self.notification_label.pack_forget()
 
     def run(self):
         self.root.mainloop()
