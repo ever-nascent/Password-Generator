@@ -18,7 +18,7 @@ class PasswordGeneratorApp:
 
     def setup_window(self):
         self.root.title("Password Generator")
-        self.root.geometry("500x600")
+        self.root.geometry("500x650")
         self.root.resizable(False, False)
 
         # Try to set icon, but don't fail if it doesn't exist
