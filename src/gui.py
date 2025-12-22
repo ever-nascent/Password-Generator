@@ -34,6 +34,16 @@ class PasswordGeneratorApp:
         self.use_symbols = ctk.BooleanVar(value=True)
 
     def create_widgets(self):
+        # Notification label at the top (hidden by default)
+        self.notification_label = ctk.CTkLabel(
+            self.root,
+            text="Copied!",
+            font=("Helvetica", 14, "bold"),
+            fg_color=["#3B8ED0", "#1F6AA5"],
+            corner_radius=0,
+            height=40
+        )
+
         # Main container with padding
         main_frame = ctk.CTkFrame(self.root, fg_color="transparent")
         main_frame.pack(fill="both", expand=True, padx=30, pady=30)
@@ -44,17 +54,7 @@ class PasswordGeneratorApp:
             text="Password Generator",
             font=("Helvetica", 28, "bold")
         )
-        title_label.pack(pady=(0, 10))
-
-        # Notification label (hidden by default)
-        self.notification_label = ctk.CTkLabel(
-            main_frame,
-            text="Copied!",
-            font=("Helvetica", 14, "bold"),
-            fg_color="green",
-            corner_radius=8,
-            height=35
-        )
+        title_label.pack(pady=(0, 30))
 
         # Password display frame
         password_frame = ctk.CTkFrame(main_frame)
@@ -196,8 +196,8 @@ class PasswordGeneratorApp:
         password = self.password_label.cget("text")
         pyperclip.copy(password)
 
-        # Show notification
-        self.notification_label.pack(pady=(0, 20))
+        # Show notification at the top
+        self.notification_label.pack(side="top", fill="x")
         self.root.after(1500, self.hide_notification)
 
     def hide_notification(self):
